@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
- * 
+ *This program creates a separate thread by implementing the Fibonacci Series
+ * in Java using Threads and Cache.
+ * @author Apurv Pandey
  */
 class numGen implements Runnable{
 
@@ -10,6 +12,10 @@ class numGen implements Runnable{
     private int numOfFib;
     private ArrayList<Long> fibs = new ArrayList();
 
+    /**
+     * This functions initialies the thread
+     * @param numOfFib int number of values 
+     */
     public numGen(int numOfFib){
         if(numOfFib < 0){
             throw new IllegalArgumentException();
@@ -25,6 +31,12 @@ class numGen implements Runnable{
 //    }
 
     public static Hashtable<Integer, Long> fibList = new Hashtable<>();
+
+    /**
+     * This function generates the fibonacci values
+     * @param num number of values
+     * @return fibonacci number at that value
+     */
     public static long fibGen(int num){
         if(fibList.containsKey(num)) return fibList.get(num);
         if(num <= 2) return 1;
@@ -35,6 +47,9 @@ class numGen implements Runnable{
         }
     }
 
+    /**
+     * Thread Runner
+     */
     @Override
     public void run() {
         for (int i = 1; i < numOfFib + 1; i++) {
